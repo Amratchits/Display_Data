@@ -36,23 +36,10 @@
 <body>
     <form id="form1" runat="server">
         <div>
-            <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:CustomersConnectionString %>" SelectCommand="SELECT * FROM [Customers] WHERE ([CustomerId] = @CustomerId)">
-                <SelectParameters>
-                    <asp:CookieParameter CookieName="Username" DefaultValue="0" Name="CustomerId" Type="Int32" />
-                </SelectParameters>
-            </asp:SqlDataSource>
-
-
-
-
-            <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSource1">
-                <Columns>
-                    <asp:BoundField DataField="CustomerId" HeaderText="CustomerId" SortExpression="CustomerId" />
-                    <asp:BoundField DataField="Name" HeaderText="Name" SortExpression="Name" />
-                    <asp:BoundField DataField="Country" HeaderText="Country" SortExpression="Country" />
-                </Columns>
-            </asp:GridView>
-
+            <asp:Button ID="Button1" runat="server" Text="Button" OnClick="btn1"/>
+            <a id="CustomerId">Customer Id will here</a>
+            <a id="CName">Customer Name will be here</a>
+            <a id="Country">Customer Address will be here</a>
 
         </div>
 

@@ -5,29 +5,67 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title></title>
+
+    
+    <style type="text/css">
+        body {
+            font-family: Arial;
+            font-size: 10pt;
+        }
+    </style>
+
+
 </head>
 <body>
     <form id="form1" runat="server">
-        <div>
-            <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:AmratConnectionString %>" SelectCommand="Get_Bill_Details" SelectCommandType="StoredProcedure">
-                <SelectParameters>
-                    <asp:CookieParameter CookieName="ACode" DefaultValue="0" Name="a_code" Type="Int32" />
-                </SelectParameters>
-            </asp:SqlDataSource>
-            <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="A_Code,SI_No" DataSourceID="SqlDataSource1">
+        <div style="width: 500px">
+            <asp:GridView ID="gvCustomers" runat="server" AutoGenerateColumns="false">
                 <Columns>
-                    <asp:BoundField DataField="A_Name" HeaderText="Agent Name" SortExpression="A_Name" />
-                    <asp:BoundField DataField="A_Code" HeaderText="Agent Code" ReadOnly="True" SortExpression="A_Code" />
-                    <asp:BoundField DataField="Bill_No" HeaderText="Bill No" SortExpression="Bill_No" />
-                    <asp:BoundField DataField="SI_No" HeaderText="SI_No" ReadOnly="True" SortExpression="SI_No" />
-                    <asp:BoundField DataField="Date_Of_Enrollment" HeaderText="Date Of Enrollment" SortExpression="Date_Of_Enrollment" />
-                    <asp:BoundField DataField="Chit_Ref" HeaderText="Chit Ref No" SortExpression="Chit_Ref" />
-                    <asp:BoundField DataField="C_Name" HeaderText="Customer Name" SortExpression="C_Name" />
-                    <asp:BoundField DataField="C_Value" HeaderText="Chit Value" SortExpression="C_Value" />
-                    <asp:BoundField DataField="C_Amount" HeaderText="Comm Amount" SortExpression="C_Amount" />
+                    <asp:BoundField DataField="CustomerID" HeaderText="Customer Id" />
+                    <asp:BoundField DataField="CName" HeaderText="Name" />
+                    <asp:BoundField DataField="Country" HeaderText="Country" />
                 </Columns>
             </asp:GridView>
+
         </div>
+
     </form>
+
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+    <link href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.css" rel="stylesheet" type="text/css" />
+
+    <script type="text/javascript">
+        $(function () {
+            $.ajax({
+                type: "POST",
+                url: "test.aspx/GetCustomers",
+                data: '{}',
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: OnSuccess,
+                failure: function (response) {
+                    alert(response.d);
+                },
+                error: function (response) {
+                    alert(response.d);
+                }
+            });
+        });
+        function OnSuccess(response) {
+            $("[id*=gvCustomers]").DataTable(
+                {
+                    bLengthChange: true,
+                    lengthMenu: [[5, 10, -1], [5, 10, "All"]],
+                    bFilter: true,
+                    bSort: true,
+                    bPaginate: true,
+                    data: response.d,
+                    columns: [{ 'data': 'CustomerID' },
+                    { 'data': 'CName' },
+                    { 'data': 'Country' }]
+                });
+        };
+    </script>
 </body>
 </html>

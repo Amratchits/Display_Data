@@ -14,6 +14,7 @@ namespace Display_Data
     public partial class Default2 : System.Web.UI.Page
     {
         //StringBuilder table = new StringBuilder();
+        string connectionString = @"Data Source=RANIGUNJSERVER\SQLSERVER; Integrated Security=true; Initial Catalog=Amrat; User ID = sa; Password=12345";
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -87,6 +88,23 @@ namespace Display_Data
         //        return data;
         //    }
         //}
+
+        //private void btn1(object sender, EventArgs e)
+        //{
+        //    SqlConnection con = new SqlConnection(connectionString);
+        //    con.Open();
+        //    SqlCommand cmd = new SqlCommand("select * from Customers", con);
+        //    SqlDataReader dr = cmd.ExecuteReader();
+        //    while(dr.Read())
+        //    {
+        //        //CustomerId.Text = dr.GetString[1];
+        //        //CName.Text = dr.GetString[2];
+        //        //Country.Text = dr.GetString[3];
+                
+        //    }
+        //    con.Close();
+        //}
+
     }
 
 }

@@ -136,19 +136,12 @@
 <body>
     <form id="form1" runat="server">
         <div class="container">
-            <h2>AMRAT</h2>
-            <%--<h3>Enter the Agent Code : 
-                <asp:DropDownList ID="DropDownList1" runat="server" DataSourceID="SqlDataSource1" DataTextField="A_Code" DataValueField="A_Code">
-                    <asp:ListItem></asp:ListItem>
-                </asp:DropDownList>
-                <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:AmratConnectionString %>" SelectCommand="SELECT [A_Code] FROM [Agent]"></asp:SqlDataSource>
-            </h3>
-            <asp:Button class="button" ID="Button1" runat="server" Text="Submit" OnClick="Btn_Click"  />--%>
+            <h2>AMRAT Chits(India) Pvt.Ltd</h2>
 
             <label for="ACode">Entere the Agent Code : </label>
             <%--<input type="text" id="ACode" name="ACode" placeholder="Agent Code..">--%>
             <asp:TextBox ID="ACode" runat="server" placeholder ="Agent Code.."></asp:TextBox>
-            </br>
+            <br />
             <label for="BCode">Select the branch : </label>
             <select id="BCode" name="BCode">
                 <option value="secunderabad">Secunderabad</option>

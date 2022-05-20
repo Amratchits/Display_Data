@@ -48,11 +48,10 @@
         }
 
             .grid-container > div {
-                background-color: rgba(255, 255, 255, 0.8);
+                background-color: snow;
                 font-weight: bold;
                 padding: 20px 0;
                 font-size: 12px;
-
             }
 
         .grid-container1 {
@@ -66,12 +65,14 @@
         }
 
             .grid-container1 > div {
-                background-color: rgba(255, 255, 255, 0.8);
+                background-color: snow;
                 text-align: center;
                 font-weight: bold;
                 padding: 20px 0;
                 font-size: 10px;
             }
+
+
 
         .grid-container2 {
             display: grid;
@@ -81,12 +82,10 @@
             padding: 2px;
             margin-top: 10px;
             margin-bottom: 10px;
-
         }
 
             .grid-container2 > div {
-                background-color: rgba(255, 255, 255, 0.8);
-                text-align: center;
+                background-color: snow;
                 font-weight: bold;
                 padding: 10px 0;
                 font-size: 15px;
@@ -94,46 +93,56 @@
 
         .item1 {
             grid-column: 1 / 3;
+            text-align: center;
         }
 
         .item2 {
             grid-column: 3 / 6;
+            text-align: center;
         }
 
         .item3 {
             grid-column: 6 / 8;
+            text-align: center;
         }
 
         .item4 {
             grid-row: 2 / 5;
+            text-align: center;
         }
 
         .item5 {
             grid-row: 2 / 5;
+            text-align: center;
         }
 
         .item6 {
             grid-column: 3 / 5;
+            text-align: left;
         }
 
         .item7 {
             grid-column: 5 / 6;
             grid-row: 2 / 5;
+            text-align: center;
         }
 
         .item8 {
             grid-column: 6 / 8;
             grid-row: 2 / 5;
+            text-align: center;
         }
 
         .item9 {
             grid-column: 3 / 5;
             grid-row: 3 / 4;
+            text-align: left;
         }
 
         .item10 {
             grid-column: 3 / 5;
             grid-row: 4 / 4;
+            text-align: left;
         }
 
         h6 {
@@ -146,7 +155,6 @@
             border-radius: 50px;
             background-color: #f2f2f2;
             padding: 20px;
-
         }
 
         div.container {
@@ -156,25 +164,28 @@
             height: 350px:
             /*resize: both;*/
             overflow: auto;
+        }
 
+        h1 {
+            font-size: 50px;
+            font-style: italic;
+            display: inline-block;
         }
-        h1{
-            font-size:50px;
-            font-style:italic;
-            display: inline-block;  
+
+        h5 {
+            margin-top: -40px;
+            margin-bottom: -10px;
+            font-size: large;
         }
-        h5{
-            margin-top:-40px;
-            margin-bottom:-10px;
-            font-size:large;
+
+        h6 {
+            margin-top: -5px;
+            margin-bottom: -5px;
+            font-size: large
         }
-        h6{
-            margin-top:-5px;
-            margin-bottom:-5px;
-            font-size:large
-        }
-        div.data_grid{
-            margin-top:20px;
+
+        div.data_grid {
+            margin-top: 20px;
         }
         /* div {
             width: 4000px;
@@ -183,12 +194,14 @@
         }*/
     </style>
     <%--<link href="Def_Style.css" rel="stylesheet" type="text/css"/>--%>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
 </head>
 <body>
 
     <%--<h2>Accordion</h2>--%>
 
-    <button class="accordion">Click here for receipt..</button>
+    <button class="accordion">Click here to Open/Close the reciept..</button>
     <div class="container">
         <div>
             <div class="head">
@@ -210,14 +223,14 @@
             </div>
             <hr />
             <div class="grid-container">
-                <div align="left">Name of the agent : </div>
-                <div>____DATA____</div>
-                <div>Bill No.: </div>
-                <div>____DATA____</div>
-                <div>Agent Code No. : </div>
-                <div>____DATA____</div>
-                <div>Date : </div>
-                <div>____DATA____</div>
+                <div align="left" class="gc1-item">Name of the agent : </div>
+                <div><a id="AName">Agen name will be here</a></div>
+                <div class="gc1-item">Bill No.: </div>
+                <div><a id="BillNo">Bill no will be here</a></div>
+                <div class="gc1-item">Agent Code No. : </div>
+                <div><a id="ACode">Agent Code will be here</a></div>
+                <div class="gc1-item">Date : </div>
+                <div><a id="Date">Today date will be shown here</a></div>
             </div>
             <div>
                 <hr />
@@ -270,9 +283,9 @@
         </div>
 
     </div>
-    
+
     <form id="form1" runat="server">
-        <div class ="data_grid">
+        <div class="data_grid">
             <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:AmratConnectionString %>" SelectCommand="Get_Bill_Details" SelectCommandType="StoredProcedure">
                 <SelectParameters>
                     <asp:CookieParameter CookieName="ACode" DefaultValue="0" Name="a_code" Type="Int32" />
@@ -298,20 +311,11 @@
 
 
     <script>
-        var acc = document.getElementsByClassName("accordion");
-        var i;
-
-        for (i = 0; i < acc.length; i++) {
-            acc[i].addEventListener("click", function () {
-                this.classList.toggle("active");
-                var panel = this.nextElementSibling;
-                if (panel.style.display === "block") {
-                    panel.style.display = "none";
-                } else {
-                    panel.style.display = "block";
-                }
+        $(document).ready(function () {
+            $("button").click(function () {
+                $(".container").fadeToggle("slow");
             });
-        }
+        });
     </script>
 
 </body>

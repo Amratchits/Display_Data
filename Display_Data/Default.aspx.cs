@@ -10,6 +10,7 @@ namespace Display_Data
     public partial class Default : System.Web.UI.Page
     {
         //string connectionString = @"Data Source=RANIGUNJSERVER\SQLSERVER; Integrated Security=true; Initial Catalog=Amrat; User ID = sa; Password=12345";
+        //string connectionString = @"Data Source=DESKTOP-CEI1CUN\SQLEXPRESS; Integrated Security=true; Initial Catalog=Amrat;";
         protected void Page_Load(object sender, EventArgs e)
         {
 

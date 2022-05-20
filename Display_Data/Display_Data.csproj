@@ -68,10 +68,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Default.aspx" />
-    <Content Include="JavaScript.js" />
     <Content Include="R.aspx" />
     <Content Include="Receipt.aspx" />
     <Content Include="Def_Style.css" />
+    <Content Include="samp.aspx" />
     <Content Include="test.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -97,6 +97,13 @@
     </Compile>
     <Compile Include="Receipt.aspx.designer.cs">
       <DependentUpon>Receipt.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="samp.aspx.cs">
+      <DependentUpon>samp.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="samp.aspx.designer.cs">
+      <DependentUpon>samp.aspx</DependentUpon>
     </Compile>
     <Compile Include="test.aspx.cs">
       <DependentUpon>test.aspx</DependentUpon>
